@@ -1,18 +1,16 @@
 <?php
 namespace cache;
 
-class Memcached
+class Memcached extends ACache
 {
-	private $link;   //	
+	
 	private $config = array(); // cache configuration
-	protected $error = NULL;
-
 
 	public function open($config)
 	{
         if(empty($config)){
         	$this->error = 'No Config';
-        	return false;
+        	return FALSE;
         }
         $this->config = $config;
         if( $this->config['autoconnect'] ){
@@ -34,7 +32,7 @@ class Memcached
 		return $this->link;
 	}
 
-	public function set($key, $value, $expiration = NULL)
+	public function set($key, $value, $expiration = 0)
 	{
 		if( $expiration === NULL ){
 			$expiration = $this->config['cache_time'];
@@ -52,32 +50,11 @@ class Memcached
 		return $this->link->delete($key);	
 	}
 
-	public function s($key, $value = '', $expiration = NULL)
-	{
-		$number = func_num_args();
-		if( $number == 1 ){
-			return $this->get($key);
-		} else {
-			if( $value === NULL  ){
-				return $this->delete($key);
-			} else {
-				return $this->set($key, $value, $expiration);
-			}				
-		}
-	}
-
     /**
      * @return boolean
      */
     public function getError()
     {
-        if( $this->config['debug'] ){
-            if( $this->error ){
-            	return $this->error;
-            } else {
-            	return $this->link->getResultMessage();
-            }
-        }
-        return false;
+        return $this->link->getResultMessage();
     }
 }

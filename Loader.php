@@ -9,7 +9,7 @@ class Loader
 			return true;
 		}
 
-		$file = './'.str_replace('\\', DIRECTORY_SEPARATOR, $class).'.php';
+		$file = SITE_PATH.'/'.str_replace('\\', DIRECTORY_SEPARATOR, $class).'.php';
 		$file = str_replace('/cache/', '/src/', $file);
 		if( file_exists($file) ){
 			include $file;
