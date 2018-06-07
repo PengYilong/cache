@@ -1,24 +1,21 @@
-The PHP cache classes
-
-[![Latest Stable Version](https://poser.pugx.org/yilongpeng/cache/v/stable)](https://packagist.org/packages/yilongpeng/cache)
-
+A PHP cache classes
 
 ## Installation
 
-Use [composer](http://getcomposer.org) to install yilong/mysql in your project:
+Use [composer](http://getcomposer.org) to install nezumi/mysql in your project:
 ```
-composer require yilongpeng/cache
+composer require nezumi/cache
 ```
 
 
 ## Usage
 ```php
-use cache\Memcached;
+use nezumi\Memcached;
 
 //load config
 $config = include './config.php';
 
-$Memcached = new cache\Memcached();
+$Memcached = new Memcached();
 $Memcached->open($config);
 $Memcached->s('name', array(1,2));
 $Memcached->s('name');

@@ -1,5 +1,5 @@
 <?php
-namespace cache;
+namespace Nezumi;
 
 class Memcached extends ACache
 {

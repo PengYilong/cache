@@ -1,9 +1,7 @@
 <?php
-defined('DS') or define('DS', DIRECTORY_SEPARATOR);
-defined('SITE_PATH') or define('SITE_PATH', dirname(__FILE__).DS);
-
 include './Loader.php';
 spl_autoload_register('Loader::_autoload');
+use Nezumi\Memcached;
 
 //load config
 $config = include './config.php';
